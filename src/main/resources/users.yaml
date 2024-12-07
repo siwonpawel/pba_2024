@@ -11,7 +11,7 @@ schemes:
   - "http"
 
 paths:
-  /users:
+  /api/users:
     post:
       tags:
         - "users"
@@ -73,7 +73,7 @@ paths:
           description: "Unprocessable entity. Codes: USER_ALREADY_EXISTS"
           schema:
             $ref: "#/definitions/Error"
-  /users/{id}:
+  /api/users/{id}:
     get:
       tags:
         - "users"

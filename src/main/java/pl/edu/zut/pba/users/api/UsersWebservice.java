@@ -4,10 +4,8 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,7 +31,6 @@ public class UsersWebservice implements UsersApi
     private final UserMapper mapper;
 
     @Override
-    @PostMapping("/api/users")
     public ResponseEntity<UserResponse> createUser(@Parameter(name = "body", description = "User object that has to be added", required = true) @Valid @RequestBody CreateRequest body)
     {
         User userResponse = mapper.toApi(userService.save(mapper.toModel(body.getUser())));
@@ -42,7 +39,6 @@ public class UsersWebservice implements UsersApi
     }
 
     @Override
-    @DeleteMapping("/api/users/{id}")
     public ResponseEntity<Void> deleteUser(@Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id") UUID id)
     {
         userService.delete(id);
@@ -51,7 +47,6 @@ public class UsersWebservice implements UsersApi
     }
 
     @Override
-    @GetMapping("/api/users")
     public ResponseEntity<UserListResponse> getAllUsers()
     {
         List<User> api = mapper.toApi(userService.findAll());
