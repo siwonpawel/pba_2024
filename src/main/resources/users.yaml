@@ -3,7 +3,6 @@ info:
   description: Specification of the CRUD interface
   version: '1.0.0'
   title: "Users CRUD interface"
-basePath: "/api"
 tags:
   - name: users
     description: Users management operations (CRUD).

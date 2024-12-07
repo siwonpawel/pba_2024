@@ -1,0 +1,44 @@
+### Get all users
+GET http://127.0.0.1:8080/api/users
+Authorization: Basic sp56708 123456
+
+### Create user
+POST http://127.0.0.1:8080/api/users
+Authorization: Basic sp56708 123456
+Content-Type: application/json
+
+{
+  "requestHeader": {
+    "requestId": "2a4fc4ce-4e6f-4b04-8cea-7c0ae5031e27",
+    "sendDate": "2020-11-17T12:08:56.235-0100"
+  },
+  "user": {
+    "name": "Paweł",
+    "surname": "Siwoń",
+    "age": 90,
+    "personalId": "01234567890",
+    "citizenship": "DE",
+    "email": "56708@zut.edu.pl"
+  }
+}
+
+> {%
+    client.global.set("userId", response.body.user.id);
+%}
+
+### Get auth token
+POST https://pba-auth-server.herokuapp.com/oauth/token
+Authorization: Basic pba_user 123456
+Content-Type: application/x-www-form-urlencoded
+
+grant_type = client_credentials
+
+> {%
+    client.global.set("access_token", response.body.access_token);
+%}
+
+### Get user by ID
+GET http://127.0.0.1:8080/api/users/{{userId}}
+Authorization: Bearer {{access_token}}
+
+
