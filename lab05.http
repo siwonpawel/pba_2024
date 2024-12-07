@@ -40,5 +40,3 @@ grant_type = client_credentials
 ### Get user by ID
 GET http://127.0.0.1:8080/api/users/{{userId}}
 Authorization: Bearer {{access_token}}
-
-
