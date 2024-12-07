@@ -1,4 +1,4 @@
-package pl.edu.zut.pba.lab04.users.api;
+package pl.edu.zut.pba.users.api;
 
 import java.util.List;
 import java.util.UUID;
@@ -16,13 +16,13 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import pl.edu.zut.pba.lab04.users.UserMapper;
-import pl.edu.zut.pba.lab04.users.UserService;
-import pl.edu.zut.pba.lab04.users.api.model.CreateRequest;
-import pl.edu.zut.pba.lab04.users.api.model.UpdateRequest;
-import pl.edu.zut.pba.lab04.users.api.model.User;
-import pl.edu.zut.pba.lab04.users.api.model.UserListResponse;
-import pl.edu.zut.pba.lab04.users.api.model.UserResponse;
+import pl.edu.zut.pba.users.UserMapper;
+import pl.edu.zut.pba.users.UserService;
+import pl.edu.zut.pba.users.api.model.CreateRequest;
+import pl.edu.zut.pba.users.api.model.UpdateRequest;
+import pl.edu.zut.pba.users.api.model.User;
+import pl.edu.zut.pba.users.api.model.UserListResponse;
+import pl.edu.zut.pba.users.api.model.UserResponse;
 
 @RestController
 @RequiredArgsConstructor

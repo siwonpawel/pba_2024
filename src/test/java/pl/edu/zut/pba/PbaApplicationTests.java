@@ -1,10 +1,10 @@
-package pl.edu.zut.pba.lab04;
+package pl.edu.zut.pba;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class PbaLab04ApplicationTests
+class PbaApplicationTests
 {
 
     @Test

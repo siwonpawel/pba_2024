@@ -1,4 +1,4 @@
-package pl.edu.zut.pba.lab04.users;
+package pl.edu.zut.pba.users;
 
 import java.util.UUID;
 

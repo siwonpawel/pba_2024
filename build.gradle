@@ -15,8 +15,8 @@ openApiGenerate {
     inputSpec = "$projectDir/src/main/resources/users.yaml"
     outputDir = "$buildDir/generated/sources/openapi"
 
-    apiPackage = 'pl.edu.zut.pba.lab04.users.api'
-    modelPackage = 'pl.edu.zut.pba.lab04.users.api.model'
+    apiPackage = 'pl.edu.zut.pba.users.api'
+    modelPackage = 'pl.edu.zut.pba.users.api.model'
 
     generateApiTests = false
     generateModelTests = false;

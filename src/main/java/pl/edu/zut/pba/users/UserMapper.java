@@ -1,4 +1,4 @@
-package pl.edu.zut.pba.lab04.users;
+package pl.edu.zut.pba.users;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
-import pl.edu.zut.pba.lab04.users.api.model.User;
+import pl.edu.zut.pba.users.api.model.User;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper
