@@ -22,6 +22,7 @@ paths:
       produces:
         - "application/json"
       parameters:
+        - $ref: '#/parameters/xHmacSignature'
         - in: "body"
           name: "body"
           description: "User object that has to be added"
@@ -121,6 +122,7 @@ paths:
       produces:
         - "application/json"
       parameters:
+        - $ref: '#/parameters/xJwsSignature'
         - name: id
           in: path
           required: true
@@ -195,6 +197,17 @@ securityDefinitions:
     type: apiKey
     name: "Bearer"
     in: "header"
+parameters:
+  xHmacSignature:
+    in: header
+    name: X-HMAC-SIGNATURE
+    type: string
+    required: true
+  xJwsSignature:
+    in: header
+    name: X-JWS-SIGNATURE
+    type: string
+    required: true
 definitions:
   User:
     type: "object"
@@ -238,11 +251,8 @@ definitions:
   Error:
     type: "object"
     required:
-      - responseHeader
       - code
     properties:
-      responseHeader:
-        $ref: "#/definitions/ResponseHeader"
       code:
         type: "string"
         example: "NOT_FOUND"
@@ -277,7 +287,6 @@ definitions:
         format: date-time
         example: "2020-11-17T12:08:56.235-0100"
         description: "Date format according to ISO_8601 for example: yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-
   CreateRequest:
     type: "object"
     required:

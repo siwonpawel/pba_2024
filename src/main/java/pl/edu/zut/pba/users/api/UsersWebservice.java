@@ -8,11 +8,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import pl.edu.zut.pba.users.UserMapper;
 import pl.edu.zut.pba.users.UserService;
@@ -31,7 +33,10 @@ public class UsersWebservice implements UsersApi
     private final UserMapper mapper;
 
     @Override
-    public ResponseEntity<UserResponse> createUser(@Parameter(name = "body", description = "User object that has to be added", required = true) @Valid @RequestBody CreateRequest body)
+    public ResponseEntity<UserResponse> createUser(
+            @NotNull @Parameter(name = "X-HMAC-SIGNATURE", description = "", required = true, in = ParameterIn.HEADER) @RequestHeader(value = "X-HMAC-SIGNATURE", required = true) String X_HMAC_SIGNATURE,
+            @Parameter(name = "body", description = "User object that has to be added", required = true) @Valid @RequestBody CreateRequest body
+    )
     {
         User userResponse = mapper.toApi(userService.save(mapper.toModel(body.getUser())));
 
@@ -63,8 +68,10 @@ public class UsersWebservice implements UsersApi
     @Override
     @PutMapping("/api/users/{id}")
     public ResponseEntity<UserResponse> updateUser(
+            @NotNull @Parameter(name = "X-JWS-SIGNATURE", description = "", required = true, in = ParameterIn.HEADER) @RequestHeader(value = "X-JWS-SIGNATURE", required = true) String X_JWS_SIGNATURE,
             @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id") UUID id,
-            @Parameter(name = "body", description = "", required = true) @Valid @RequestBody UpdateRequest body)
+            @Parameter(name = "body", description = "", required = true) @Valid @RequestBody UpdateRequest body
+    )
     {
         return ResponseEntity.ok(new UserResponse(body.getRequestHeader(), mapper.toApi(userService.save(id, mapper.toModel(body.getUser())))));
     }
