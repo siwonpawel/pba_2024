@@ -1,4 +1,4 @@
-package pl.edu.zut.pba.security;
+package pl.edu.zut.pba.security.configuration;
 
 import java.io.IOException;
 import java.security.cert.CertificateException;
@@ -53,7 +53,7 @@ public class SecurityConfiguration
 
                 .authorizeHttpRequests(auth ->
                         auth
-                                .requestMatchers("/api/users").authenticated())
+                                .requestMatchers("/api/users", "/api/signing").authenticated())
                 .httpBasic(withDefaults())
 
                 .authorizeHttpRequests(auth ->

@@ -1,4 +1,4 @@
-package pl.edu.zut.pba.security;
+package pl.edu.zut.pba.security.configuration;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
