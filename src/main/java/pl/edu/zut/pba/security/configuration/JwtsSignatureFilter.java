@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import pl.edu.zut.pba.security.JwtsService;
 
-@Component
+//@Component
 @RequiredArgsConstructor
 public class JwtsSignatureFilter extends OncePerRequestFilter
 {
